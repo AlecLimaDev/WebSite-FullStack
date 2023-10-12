@@ -33,7 +33,7 @@
             if (res.data === "Success") {
               navigate("/home");
             } else {
-              alert("No record existed");
+              alert("Usuário não cadastrado");
             }
           })
           .catch((err) => console.log(err));
