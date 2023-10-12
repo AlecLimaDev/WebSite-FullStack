@@ -12,7 +12,7 @@ function SignUpValidation(values: FormValues): ErrorType {
     }
   
     if (!values.email) {
-      errors.email = "Email should not be empty";
+      errors.email = "O campo email está vazio";
     } else if (!email_pattern.test(values.email)) {
       errors.email = "Esse formato de email é inválido";
     } else {

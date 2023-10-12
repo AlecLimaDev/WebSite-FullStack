@@ -33,8 +33,8 @@ function SignUp() {
     if (errors.name === "" && errors.email === "" && errors.password === "") {
       axios
         .post("http://localhost:8081/signup", values)
-        .then((res) => {
-          navigate("/");
+        .then(() => {
+          navigate("");
         })
         .catch((err) => console.log(err));
     }
