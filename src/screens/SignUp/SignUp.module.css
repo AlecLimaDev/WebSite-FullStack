@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+.Container {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  background: rgb(0, 0, 196);
+}
+
+form {
+  border: 2px solid #ffffff;
+  padding: 18px;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: whitesmoke;
+  height: max-content;
+  border-radius: 8px;
+  width: 350px;
+}
+
+button {
+  width: 100%;
+  border: none;
+}
+
+button:hover {
+  width: 100%;
+  background-color: rgb(0, 255, 0);
+  cursor: pointer;
+}
+
+.position {
+  justify-content: space-evenly;
+}
+
+input {
+  border: transparent;
+  background: none;
+  display: flex;
+}
+
