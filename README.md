@@ -1,27 +1,36 @@
-# React + TypeScript + Vite
+# Register and Login with validation and database (MySQL)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+All register create it is send to the database.
 
-Currently, two official plugins are available:
+Is an application that consumes and api of the trending topics in the united states of america, and you can see the /home tab
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## How Run The Project With Docker
 
-## Expanding the ESLint configuration
+Currently just the frontend it is at container.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+To run the backend you need to activate it for now through npm start or yarn start
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+```
+docker build -t aleclimadev/website .
+docker run -it --rm -p 3000:3000 aleclimadev/website
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## How run the project
+
+First, you go download:
+
+```
+git clone $URL_DO_PROJETO.git
+
+AND
+
+npm install or yard add
+```
+
+and next run the command:
+
+```
+npm run dev    or    yarn dev
+
+npm start      of    yarn start (start server)
+```
