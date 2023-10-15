@@ -32,5 +32,7 @@ and next run the command:
 ```
 npm run dev    or    yarn dev
 
+cd server
+
 npm start      of    yarn start (start server)
 ```
