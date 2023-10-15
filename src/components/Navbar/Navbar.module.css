@@ -3,7 +3,7 @@
   --black: #444;
   --light-color: #777;
   --bg-color: #fff;
-  --border: 8px solid rgba(0, 0, 0, 0.2);
+  --border: 4px solid rgba(0, 0, 0, 0.2);
   --box-shadow-inset: 0.4rem 0.4rem 1rem #ccc inset,
     0.4rem 0.4rem 1rem #fff inset;
 }

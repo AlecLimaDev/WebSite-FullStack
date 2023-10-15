@@ -15,6 +15,10 @@ const db = mysql.createConnection({
   database: process.env.DB_DATABASE
 });
 
+app.get("/", (req,res) => {
+  res.send("Hello World")
+})
+
 app.post("/signup", (req, res) => {
   const { name, email, password } = req.body;
 

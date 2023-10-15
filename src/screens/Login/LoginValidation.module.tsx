@@ -10,13 +10,13 @@ function LoginValidation(values: FormValues): FormErrors {
   } else if (!email_pattern.test(values.email)) {
     errors.email = "Formato de email inválido";
   } else {
-    errors.email = "";
+    errors.email = ""; // Limpa os erros anteriores
   }
 
   if (values.password === "") {
     errors.password = "O campo senha está vazio";
   } else if (!password_pattern.test(values.password)) {
-    errors.password = "Formato de senha inválido  ";
+    errors.password = "Formato de senha inválido";
   } else {
     errors.password = "";
   }

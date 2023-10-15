@@ -28,17 +28,26 @@ function SignUp() {
 
   const handleSubmit = (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setErrors(SignUpValidation(values));
-
-    if (errors.name === "" && errors.email === "" && errors.password === "") {
+    const validationErrors = SignUpValidation(values); 
+  
+    if (validationErrors.name === "" && validationErrors.email === "" && validationErrors.password === "") {
+      setErrors({
+        name: "",
+        email: "",
+        password: "",
+      });
+  
       axios
         .post("http://localhost:8081/signup", values)
         .then(() => {
-          navigate("");
+          navigate("/");
         })
         .catch((err) => console.log(err));
+    } else {
+      setErrors(validationErrors);
     }
   };
+  
 
   return (
     <div className={S.Container}>
