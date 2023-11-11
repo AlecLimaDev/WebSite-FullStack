@@ -16,6 +16,6 @@ class SignUpController {
   }
 }
 
-// Padrão singleton
 
+// Padrão singleton
 module.exports = new SignUpController();

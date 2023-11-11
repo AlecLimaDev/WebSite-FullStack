@@ -11,10 +11,11 @@ class LoginController {
       if (data.length > 0) {
         return res.json("Login efetuado com sucesso");
       } else {
-        return res.json("Falha ao tentar efetuar o login");
+        return res.json("Falha ao tentar efetuar o login " );
       }
     });
   }
 }
+
 // Padrão Singleton
 module.exports = new LoginController();

@@ -21,7 +21,7 @@ export function useLoginValidation() {
     } else if (!email_pattern.test(values.email)) {
       errors.email = "Formato de email inválido";
     } else {
-      errors.email = ""; // Limpa os erros anteriores
+      errors.email = ""; 
     }
 
     if (values.password === "") {

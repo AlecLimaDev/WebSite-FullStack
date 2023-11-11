@@ -28,12 +28,15 @@ export function useLogin() {
   async function handleInput(event: ChangeEvent<HTMLInputElement>) {
     setValues((prev) => ({
       ...prev,
-      [event.target.name]: [event.target.value],
+      [event.target.name]: event.target.value,
     }));
   }
 
   useEffect(() => {
-    setErrors(LoginValidation(values));
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      ...LoginValidation(values),
+    }));
   }, [values]);
 
   async function handleSubmit(event: ChangeEvent<HTMLFormElement>) {
@@ -41,20 +44,19 @@ export function useLogin() {
 
     if (!errors.email && !errors.password) {
       try {
-        const response = await axios.post(
-          "http://localhost:8081/login",
-          values
-        );
-        if (response.data === "Success") {
+        const response = await axios.post("http://localhost:8081/login", values);
+
+        if (response.status === 200) {
           navigate("/home");
         } else {
           alert("Senha errada ou conta inexistente");
         }
       } catch (error) {
-        console.log(error);
+        console.error("Erro ao tentar fazer login:");
       }
     }
   }
+
   return {
     handleInput,
     handleSubmit,
