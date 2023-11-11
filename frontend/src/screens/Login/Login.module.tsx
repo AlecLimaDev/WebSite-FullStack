@@ -1,50 +1,13 @@
-import axios from "axios";
-import { useState, ChangeEvent, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
 import S from "./Login.module.css";
-import { FormErrors, FormValues } from "../../types/LoginValidation.module";
-import LoginValidation from "./LoginValidation.module";
+import { useLogin } from "../../hooks/useLogin";
+import { Link } from "react-router-dom";
 
 function Login() {
-  const navigate = useNavigate();
-  const [values, setValues] = useState<FormValues>({
-    email: "",
-    password: "",
-  });
-
-  const [errors, setErrors] = useState<FormErrors>({});
-
-  const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
-    setValues((prev) => ({
-      ...prev,
-      [event.target.name]: [event.target.value],
-    }));
-  };
-
-  useEffect(() => {
-    setErrors(LoginValidation(values));
-  }, [values]);
-
-  const handleSubmit = (event: ChangeEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    if (!errors.email && !errors.password) {
-      axios
-        .post("http://localhost:8081/login", values)
-        .then((res) => {
-          if (res.data === "Success") {
-            navigate("/home");
-          } else {
-            alert("Senha errada ou conta inexistente");
-          }
-        })
-        .catch((err) => console.log(err));
-    }
-  };
+  const { handleSubmit, handleInput, errors } = useLogin();
 
   return (
     <div className={S.Container}>
-      <form action="" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <h3>Entrar</h3>
         <div className={S.position}>
           <label htmlFor="email">Email: </label>

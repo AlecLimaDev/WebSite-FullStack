@@ -1,53 +1,9 @@
-import { ChangeEvent, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { ErrorType, FormValues } from "../../types/SignUpValidation.module";
-import SignUpValidation from "./SignUpValidation.module";
+import { Link } from "react-router-dom";
+import { useSignUp } from "../../hooks/useSignUp";
 import S from "./SignUp.module.css";
 
 function SignUp() {
-  const navigate = useNavigate();
-  const [values, setValues] = useState<FormValues>({
-    name: "",
-    email: "",
-    password: "",
-  });
-
-  const [errors, setErrors] = useState<ErrorType>({
-    name: "",
-    email: "",
-    password: "",
-  });
-
-  const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
-    setValues((prev) => ({
-      ...prev,
-      [event.target.name]: [event.target.value],
-    }));
-  };
-
-  const handleSubmit = (event: ChangeEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const validationErrors = SignUpValidation(values); 
-  
-    if (validationErrors.name === "" && validationErrors.email === "" && validationErrors.password === "") {
-      setErrors({
-        name: "",
-        email: "",
-        password: "",
-      });
-  
-      axios
-        .post("http://localhost:8081/signup", values)
-        .then(() => {
-          navigate("/");
-        })
-        .catch((err) => console.log(err));
-    } else {
-      setErrors(validationErrors);
-    }
-  };
-  
+  const { errors, handleInput, handleSubmit } = useSignUp();
 
   return (
     <div className={S.Container}>

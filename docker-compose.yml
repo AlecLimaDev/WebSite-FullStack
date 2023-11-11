@@ -4,17 +4,12 @@ services:
     build: ./frontend
     ports:
       - 3000:3000
-    environment:
-      - DB_URL=mysql://database/alec
   backend:
     build: ./backend
     ports:
-      - 8000:8000
+      - 8007:8007
   database:
     image: mysql:8
     ports:
-      - 3306:3306
-    volumes:
-      - alec:/data/database
-volumes:
-  alec:
+      - 3309:3309
+   
