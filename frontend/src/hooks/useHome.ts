@@ -20,16 +20,26 @@ export const useHome = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    apiUS
-      .get("/v2/top-headlines")
-      .then((response) => {
+    const controller = new AbortController();
+    async function handleData() {
+      try {
+        const response = await apiUS.get("/v2/top-headlines", {
+          signal: controller.signal,
+        });
         console.log(response.data.articles);
         setData(response.data.articles);
-      })
-      .catch((err) => {
-        setError("Falha na requisição.");
-        console.log(err);
-      });
+      } catch (error: unknown) {
+        if (error instanceof Error && error.name !== "AbortController") {
+          throw new Error("Falha na Requisição " + error.stack);
+        }
+      }
+    }
+    handleData();
+
+    return () => {
+      console.log("Desmontando...");
+      controller.abort();
+    };
   }, []);
 
   const filteredSearch = data.filter(
@@ -45,6 +55,6 @@ export const useHome = () => {
     setSearch,
     setError,
     error,
-    search
+    search,
   };
 };
