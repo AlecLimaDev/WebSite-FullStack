@@ -44,6 +44,18 @@ A entidade login no banco de dados é responsável por armazenar as informaçõe
 | password | Senha do usuário                      |
 
 
+## Configuração do Projeto
+### Configuração do Banco de Dados
+Certifique-se de ter o MySQL instalado. Utilize o script SQL abaixo para criar a tabela necessária:
+
+CREATE TABLE login (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
+);
+
+
 > ## Como rodar o projeto de forma tradicional
 
 Primeiro você vai da git clone do projeto:
@@ -90,3 +102,5 @@ A aplicação estará disponível em http://localhost:5173.
 ## Como rodar o Projeto com Docker 
 > Atualmente, estou configurando o Docker. Porém, ao executar o docker-compose up o frontend da aplicação vai rodar na porta http://localhost:3000. Falta eu verificar o que está acontecendo para o backend não rodar em conjunto com o banco de dados.
 
+
+## 🖋️ Autor: Alec Lima
