@@ -1,8 +1,8 @@
-const express = require("express");
-const cors = require("cors");
+import express from "express"
+import cors from "cors"
 
-const SignUpController = require("./app/controllers/SignUpController");
-const LoginController = require("./app/controllers/LoginController");
+import SignUpController from "./app/controllers/SignUpController";
+import LoginController from "./app/controllers/LoginController";
 
 const app = express();
 app.use(cors());
